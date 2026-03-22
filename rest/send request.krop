@@ -1,0 +1,15 @@
+{
+  "details": {
+    "endpoint": "http://localhost:5000",
+    "path": "/ask/",
+    "method": "POST"
+  },
+  "requests": [
+    {
+      "contentType": "none"
+    }
+  ],
+  "operationType": "unary",
+  "invokerName": "rest",
+  "typeHint": "POST"
+}
