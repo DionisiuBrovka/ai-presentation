@@ -1,4 +1,5 @@
 # Project exclude
+input
 output
 .vscode
 
