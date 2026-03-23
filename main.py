@@ -2,7 +2,6 @@ from io import BytesIO
 
 from flask import Flask, send_file
 from flask import request
-from pydub import audio_segment
 
 app = Flask(__name__)
 
@@ -15,23 +14,8 @@ def ask():
     if file.filename == '':
         return {'error': 'No selected file'}, 400
 
-    # Читаем аудиофайл (например, mp3)
-    audio = audio_segment.from_file(file.stream)
-
-    # Здесь можно обработать аудио по вашему желанию
-    # Например, для примера просто уменьшим громкость
-    processed_audio = audio - 10  # уменьшает громкость на 10 дБ
-
-
-    
-    # Сохраняем обработанный файл во временный буфер
-    buf = BytesIO()
-    processed_audio.export(buf, format="wav")
-    buf.seek(0)
-
-    # Возвращаем файл клиенту
     return send_file(
-        buf,
+        file,
         mimetype="audio/wav",
         as_attachment=True,
         download_name="processed_audio.wav"
