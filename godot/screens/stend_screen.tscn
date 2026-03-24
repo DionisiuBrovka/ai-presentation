@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://pgbj06f3nnkr"]
+
+[ext_resource type="PackedScene" uid="uid://dfe0uhhjvjvhw" path="res://screens/3d_background.tscn" id="1_gsmr6"]
+
+[node name="StendScreen" type="Control" unique_id=1004877880]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="__interactive_background__" type="Control" parent="." unique_id=523847305]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="__interactive_background__" unique_id=236319179]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="__interactive_background__/SubViewportContainer" unique_id=226555238]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="3DBackground" parent="__interactive_background__/SubViewportContainer/SubViewport" unique_id=981601610 instance=ExtResource("1_gsmr6")]
+
+[node name="__sub_info__" type="Panel" parent="." unique_id=1356913732]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -792.0
+offset_top = -1003.0
+offset_right = -48.0
+offset_bottom = -79.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="." unique_id=716320430]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 108.0
+offset_top = -224.0
+offset_right = 994.0
+offset_bottom = -77.0
+grow_vertical = 0
