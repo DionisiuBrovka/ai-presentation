@@ -1,15 +1,14 @@
 import os
 from datetime import datetime
-
-# Импортируем класс основной веб-фреймворк
-from flask import Flask, send_file, request
-from flask.cli import load_dotenv  
-
-# Библиотека для работы с groq
-from groq import Groq
+from dotenv import load_dotenv
 load_dotenv()
-API_KEY = os.getenv("GROQ_API_KEY")# Получаем API-ключ для сервиса Groq из переменных окружения
-_client = Groq(api_key=API_KEY)# Инициализируем клиента Groq для дальнейшей работы с API
+
+from flask import Flask, send_file, request
+from groq import Groq
+from silero_tts.silero_tts import SileroTTS
+
+API_KEY = os.getenv("GROQ_API_KEY")
+_client = Groq(api_key=API_KEY)
 
 # Импортируем класс SileroTTS для синтеза речи из текста
 from silero_tts.silero_tts import SileroTTS 
@@ -64,7 +63,7 @@ def ask():
     # ---------------------------------------------------------------------
 
     # 2. think  - обрабатываем полученные данные (например, распознаём речь и генерируем ответ)
-    with open("promts/system_promt.txt", "r") as file:
+    with open("promts/system_promt.txt", "r", encoding="utf-8") as file:
         system_promt = file.read()
 
     completion = _client.chat.completions.create(
